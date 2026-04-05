@@ -1,0 +1,24 @@
+<h2>Persona Confidant Manager</h2>
+
+<ul>
+
+  <li *ngFor="let confidant of confidants">
+
+    <strong>{{ confidant.name }}</strong>
+    ({{ confidant.arcana }})
+
+    <br>
+
+    Game: {{ confidant.game }}
+
+    <br>
+
+    Rank: {{ confidant.rank }} / {{ confidant.maxRank }}
+
+    <br>
+
+    Notes: {{ confidant.notes }}
+
+  </li>
+
+</ul>
