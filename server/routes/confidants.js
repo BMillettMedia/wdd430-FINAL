@@ -113,4 +113,52 @@ router.delete("/:id", async (req, res) => {
 
 });
 
+//temp end point
+router.post('/seed', async (req, res) => {
+
+await Confidant.insertMany([
+
+{
+name: "Sojiro Sakura",
+arcana: "Hierophant",
+game: "Persona 5",
+rank: 1,
+maxRank: 10,
+notes: ""
+},
+
+{
+name: "Ryuji Sakamoto",
+arcana: "Chariot",
+game: "Persona 5",
+rank: 1,
+maxRank: 10,
+notes: ""
+},
+
+{
+name: "Yosuke Hanamura",
+arcana: "Magician",
+game: "Persona 4",
+rank: 1,
+maxRank: 10,
+notes: ""
+},
+
+{
+name: "Yukari Takeba",
+arcana: "Lovers",
+game: "Persona 3",
+rank: 1,
+maxRank: 10,
+notes: ""
+}
+
+]);
+
+res.send("Database Seeded");
+
+});
+
+
 module.exports = router;

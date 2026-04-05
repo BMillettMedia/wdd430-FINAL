@@ -1,0 +1,25 @@
+<h2 *ngIf="!editMode">Add Confidant</h2>
+<h2 *ngIf="editMode">Edit Confidant</h2>
+
+<form (ngSubmit)="saveConfidant()">
+
+    <label>Name</label>
+    <input [(ngModel)]="confidant.name" name="name">
+
+    <label>Arcana</label>
+    <input [(ngModel)]="confidant.arcana" name="arcana">
+
+    <label>Game</label>
+    <input [(ngModel)]="confidant.game" name="game">
+
+    <label>Rank</label>
+    <input type="number" [(ngModel)]="confidant.rank" name="rank">
+
+    <label>Notes</label>
+    <textarea [(ngModel)]="confidant.notes" name="notes"></textarea>
+
+    <br><br>
+
+    <button type="submit">Save</button>
+
+</form>

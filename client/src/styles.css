@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+
+background: #111;
+font-family: Arial, sans-serif;
+color: white;
+
+}
+
+h1 {
+
+color: gold;
+
+}
+
+button {
+
+background: crimson;
+color: white;
+border: none;
+padding: 6px 12px;
+margin-right: 5px;
+border-radius: 4px;
+
+}
+
+button:hover {
+
+background: darkred;
+
+}
+
+nav a {
+
+color: gold;
+margin-right: 10px;
+
+}
