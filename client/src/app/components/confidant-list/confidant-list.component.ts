@@ -1,61 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { ConfidantService } from '../../services/confidant.service';
-import { Confidant } from '../../models/confidant.model';
+/**
+ * Service responsible for communicating with the Node API
+ */
 
-@Component({
-  selector: 'app-confidant-list',
-  templateUrl: './confidant-list.component.html',
-  styleUrls: ['./confidant-list.component.css']
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
 })
-export class ConfidantListComponent implements OnInit {
+export class ConfidantService {
 
-  confidants: Confidant[] = [];
-  filteredConfidants: Confidant[] = [];
+  private apiUrl = 'http://localhost:3000/api/confidants';
 
-  selectedGame = 'All';
-  searchTerm = '';
+  constructor(private http: HttpClient) {}
 
-  constructor(private confidantService: ConfidantService) {}
-
-  ngOnInit(): void {
-
-    this.loadConfidants();
-
+  /**
+   * Get all confidants from database
+   */
+  getConfidants(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
   }
 
-  loadConfidants() {
+  /**
+   * Update notes field
+   */
+  updateNotes(id: string, notes: string) {
 
-    this.confidantService.getConfidants()
-      .subscribe(data => {
-
-        this.confidants = data;
-        this.applyFilters();
-
-      });
-
-  }
-
-  applyFilters() {
-
-    this.filteredConfidants = this.confidants.filter(c => {
-
-      const matchesGame =
-        this.selectedGame === 'All' ||
-        c.game === this.selectedGame;
-
-      const matchesSearch =
-        c.name.toLowerCase().includes(this.searchTerm.toLowerCase());
-
-      return matchesGame && matchesSearch;
-
-    });
-
-  }
-
-  deleteConfidant(id: string) {
-
-    this.confidantService.deleteConfidant(id)
-      .subscribe(() => this.loadConfidants());
+    return this.http.put(`${this.apiUrl}/${id}`, { notes });
 
   }
 

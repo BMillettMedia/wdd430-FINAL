@@ -19,4 +19,6 @@ export interface Confidant {
 
   notes: string;
 
+  arcanaIcon?: string;
+
 }

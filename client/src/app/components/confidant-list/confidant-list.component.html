@@ -1,51 +1,51 @@
-<h2>Confidants</h2>
+<h2>Persona Confidant Manager</h2>
 
-<div class="controls">
+<table border="1">
 
-<label>Filter Game:</label>
+  <thead>
 
-<select [(ngModel)]="selectedGame" (change)="applyFilters()">
+    <tr>
+    <th>Name</th>
+    <th>Arcana</th>
+    <th>Game</th>
+    <th>Rank</th>
+    <th>Notes</th>
+    <th>Save</th>
+    </tr>
 
-<option value="All">All</option>
-<option value="Persona 3">Persona 3</option>
-<option value="Persona 4">Persona 4</option>
-<option value="Persona 5">Persona 5</option>
+  </thead>
 
-</select>
+  <tbody>
 
-<label>Search:</label>
+    <tr *ngFor="let confidant of confidants">
 
-<input
-  [(ngModel)]="searchTerm"
-  (input)="applyFilters()"
-  placeholder="Search confidant">
+    <td>{{confidant.name}}</td>
 
-</div>
+    <td>{{confidant.arcana}}</td>
 
-<hr>
+    <td>{{confidant.game}}</td>
 
-<div *ngFor="let confidant of filteredConfidants" class="confidant-card">
+    <td>{{confidant.rank}} / {{confidant.maxRank}}</td>
 
-<h3>{{ confidant.name }}</h3>
+    <td>
 
-<p><strong>Arcana:</strong> {{ confidant.arcana }}</p>
+    <input
+    [(ngModel)]="confidant.notes"
+    style="width:300px"
+    />
 
-<p><strong>Game:</strong> {{ confidant.game }}</p>
+    </td>
 
-<p>Rank: {{ confidant.rank }}/{{ confidant.maxRank }}</p>
+    <td>
 
-<div class="rank-bar">
+    <button (click)="saveNotes(confidant)">
+    Save
+    </button>
 
-<div
-  class="rank-fill"
-  [style.width.%]="(confidant.rank / confidant.maxRank) * 100">
+    </td>
 
-</div>
+    </tr>
 
-</div>
+  </tbody>
 
-<button [routerLink]="['/confidant', confidant._id]">View</button>
-<button [routerLink]="['/confidant/edit', confidant._id]">Edit</button>
-<button (click)="deleteConfidant(confidant._id!)">Delete</button>
-
-</div>
+</table>

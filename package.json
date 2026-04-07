@@ -17,5 +17,14 @@
   "bugs": {
     "url": "https://github.com/BMillettMedia/wdd430-FINAL/issues"
   },
-  "homepage": "https://github.com/BMillettMedia/wdd430-FINAL#readme"
+  "homepage": "https://github.com/BMillettMedia/wdd430-FINAL#readme",
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "mongoose": "^9.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
 }

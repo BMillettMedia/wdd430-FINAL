@@ -1,40 +1,22 @@
 /**
- * Confidant API Routes
- * Handles CRUD operations for confidants
+ * Routes for Confidant API
+ * Handles CRUD operations for Persona confidants
  */
 
-const express = require("express");
+const express = require('express');
 const router = express.Router();
+const Confidant = require('../models/confidant');
 
-const Confidant = require("../models/confidant");
-
-
-// GET ALL CONFIDANTS
-router.get("/", async (req, res) => {
+/**
+ * GET
+ * Returns all confidants
+ */
+router.get('/', async (req, res) => {
 
   try {
 
     const confidants = await Confidant.find();
-
-    res.json(confidants);
-
-  } catch (error) {
-
-    res.status(500).json({ message: error.message });
-
-  }
-
-});
-
-
-// GET ONE CONFIDANT
-router.get("/:id", async (req, res) => {
-
-  try {
-
-    const confidant = await Confidant.findById(req.params.id);
-
-    res.json(confidant);
+    res.status(200).json(confidants);
 
   } catch (error) {
 
@@ -44,66 +26,21 @@ router.get("/:id", async (req, res) => {
 
 });
 
-
-// CREATE CONFIDANT
-router.post("/", async (req, res) => {
-
-  const confidant = new Confidant({
-
-    name: req.body.name,
-    arcana: req.body.arcana,
-    game: req.body.game,
-    rank: req.body.rank,
-    maxRank: req.body.maxRank,
-    notes: req.body.notes
-
-  });
+/**
+ * PUT
+ * Update a confidant's notes
+ */
+router.put('/:id', async (req, res) => {
 
   try {
 
-    const newConfidant = await confidant.save();
-
-    res.status(201).json(newConfidant);
-
-  } catch (error) {
-
-    res.status(400).json({ message: error.message });
-
-  }
-
-});
-
-
-// UPDATE CONFIDANT
-router.put("/:id", async (req, res) => {
-
-  try {
-
-    const updatedConfidant = await Confidant.findByIdAndUpdate(
+    const updated = await Confidant.findByIdAndUpdate(
       req.params.id,
-      req.body,
+      { notes: req.body.notes },
       { new: true }
     );
 
-    res.json(updatedConfidant);
-
-  } catch (error) {
-
-    res.status(400).json({ message: error.message });
-
-  }
-
-});
-
-
-// DELETE CONFIDANT
-router.delete("/:id", async (req, res) => {
-
-  try {
-
-    await Confidant.findByIdAndDelete(req.params.id);
-
-    res.json({ message: "Confidant deleted" });
+    res.status(200).json(updated);
 
   } catch (error) {
 
@@ -112,53 +49,5 @@ router.delete("/:id", async (req, res) => {
   }
 
 });
-
-//temp end point
-router.post('/seed', async (req, res) => {
-
-await Confidant.insertMany([
-
-{
-name: "Sojiro Sakura",
-arcana: "Hierophant",
-game: "Persona 5",
-rank: 1,
-maxRank: 10,
-notes: ""
-},
-
-{
-name: "Ryuji Sakamoto",
-arcana: "Chariot",
-game: "Persona 5",
-rank: 1,
-maxRank: 10,
-notes: ""
-},
-
-{
-name: "Yosuke Hanamura",
-arcana: "Magician",
-game: "Persona 4",
-rank: 1,
-maxRank: 10,
-notes: ""
-},
-
-{
-name: "Yukari Takeba",
-arcana: "Lovers",
-game: "Persona 3",
-rank: 1,
-maxRank: 10,
-notes: ""
-}
-
-]);
-
-res.send("Database Seeded");
-
-});
-
 
 module.exports = router;

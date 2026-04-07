@@ -1,0 +1,229 @@
+[
+{
+"name":"Joker",
+"arcana":"Fool",
+"game":"Persona 5 Royal",
+"rank":1,
+"maxRank":10,
+"notes":"Protagonist of Persona 5 and leader of the Phantom Thieves"
+},
+{
+"name":"Ryuji Sakamoto",
+"arcana":"Chariot",
+"game":"Persona 5 Royal",
+"rank":1,
+"maxRank":10,
+"notes":"Former track star and founding Phantom Thief"
+},
+{
+"name":"Ann Takamaki",
+"arcana":"Lovers",
+"game":"Persona 5 Royal",
+"rank":1,
+"maxRank":10,
+"notes":"Model and Phantom Thief known as Panther"
+},
+{
+"name":"Yusuke Kitagawa",
+"arcana":"Emperor",
+"game":"Persona 5 Royal",
+"rank":1,
+"maxRank":10,
+"notes":"Eccentric art student and Phantom Thief known as Fox"
+},
+{
+"name":"Makoto Niijima",
+"arcana":"Priestess",
+"game":"Persona 5 Royal",
+"rank":1,
+"maxRank":10,
+"notes":"Student council president and Phantom Thief Queen"
+},
+{
+"name":"Futaba Sakura",
+"arcana":"Hermit",
+"game":"Persona 5 Royal",
+"rank":1,
+"maxRank":10,
+"notes":"Genius hacker and Phantom Thief Oracle"
+},
+{
+"name":"Haru Okumura",
+"arcana":"Empress",
+"game":"Persona 5 Royal",
+"rank":1,
+"maxRank":10,
+"notes":"Daughter of Okumura Foods CEO and Phantom Thief Noir"
+},
+{
+"name":"Goro Akechi",
+"arcana":"Justice",
+"game":"Persona 5 Royal",
+"rank":1,
+"maxRank":10,
+"notes":"Detective Prince with mysterious motives"
+},
+{
+"name":"Kasumi Yoshizawa",
+"arcana":"Faith",
+"game":"Persona 5 Royal",
+"rank":1,
+"maxRank":10,
+"notes":"Gymnast introduced in Persona 5 Royal"
+},
+{
+"name":"Takuto Maruki",
+"arcana":"Councillor",
+"game":"Persona 5 Royal",
+"rank":1,
+"maxRank":10,
+"notes":"School counselor with reality altering abilities"
+},
+
+{
+"name":"Yu Narukami",
+"arcana":"Fool",
+"game":"Persona 4 Golden",
+"rank":1,
+"maxRank":10,
+"notes":"Protagonist and leader of the Investigation Team"
+},
+{
+"name":"Yosuke Hanamura",
+"arcana":"Magician",
+"game":"Persona 4 Golden",
+"rank":1,
+"maxRank":10,
+"notes":"Best friend of the protagonist"
+},
+{
+"name":"Chie Satonaka",
+"arcana":"Chariot",
+"game":"Persona 4 Golden",
+"rank":1,
+"maxRank":10,
+"notes":"Energetic martial arts enthusiast"
+},
+{
+"name":"Yukiko Amagi",
+"arcana":"Priestess",
+"game":"Persona 4 Golden",
+"rank":1,
+"maxRank":10,
+"notes":"Heir to the Amagi Inn"
+},
+{
+"name":"Kanji Tatsumi",
+"arcana":"Emperor",
+"game":"Persona 4 Golden",
+"rank":1,
+"maxRank":10,
+"notes":"Delinquent with a love for sewing"
+},
+{
+"name":"Rise Kujikawa",
+"arcana":"Lovers",
+"game":"Persona 4 Golden",
+"rank":1,
+"maxRank":10,
+"notes":"Former idol and Investigation Team navigator"
+},
+{
+"name":"Naoto Shirogane",
+"arcana":"Fortune",
+"game":"Persona 4 Golden",
+"rank":1,
+"maxRank":10,
+"notes":"Detective Prince assisting the investigation"
+},
+{
+"name":"Tohru Adachi",
+"arcana":"Jester",
+"game":"Persona 4 Golden",
+"rank":1,
+"maxRank":10,
+"notes":"Police detective involved in the case"
+},
+
+{
+"name":"Makoto Yuki",
+"arcana":"Fool",
+"game":"Persona 3 Reload",
+"rank":1,
+"maxRank":10,
+"notes":"Protagonist of Persona 3"
+},
+{
+"name":"Yukari Takeba",
+"arcana":"Lovers",
+"game":"Persona 3 Reload",
+"rank":1,
+"maxRank":10,
+"notes":"Member of SEES skilled with a bow"
+},
+{
+"name":"Junpei Iori",
+"arcana":"Magician",
+"game":"Persona 3 Reload",
+"rank":1,
+"maxRank":10,
+"notes":"Comic relief and baseball fan"
+},
+{
+"name":"Mitsuru Kirijo",
+"arcana":"Empress",
+"game":"Persona 3 Reload",
+"rank":1,
+"maxRank":10,
+"notes":"Student council president and SEES leader"
+},
+{
+"name":"Akihiko Sanada",
+"arcana":"Star",
+"game":"Persona 3 Reload",
+"rank":1,
+"maxRank":10,
+"notes":"Boxing champion and SEES member"
+},
+{
+"name":"Fuuka Yamagishi",
+"arcana":"Priestess",
+"game":"Persona 3 Reload",
+"rank":1,
+"maxRank":10,
+"notes":"Support specialist of SEES"
+},
+{
+"name":"Aigis",
+"arcana":"Aeon",
+"game":"Persona 3 Reload",
+"rank":1,
+"maxRank":10,
+"notes":"Anti-shadow android created by the Kirijo group"
+},
+{
+"name":"Ken Amada",
+"arcana":"Justice",
+"game":"Persona 3 Reload",
+"rank":1,
+"maxRank":10,
+"notes":"Young Persona user seeking revenge"
+},
+{
+"name":"Shinjiro Aragaki",
+"arcana":"Hierophant",
+"game":"Persona 3 Reload",
+"rank":1,
+"maxRank":10,
+"notes":"Former SEES member with a tragic past"
+},
+
+{
+"name":"Metis",
+"arcana":"Unknown",
+"game":"Episode Aigis",
+"rank":1,
+"maxRank":10,
+"notes":"Mysterious android appearing in The Answer"
+}
+]

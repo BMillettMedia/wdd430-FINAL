@@ -1,68 +1,33 @@
 /**
- * Confidant Service
- * Handles communication between Angular and the Node API.
+ * Service responsible for communicating with the Node API
  */
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Confidant } from '../models/confidant.model';
-
 @Injectable({
   providedIn: 'root'
 })
 export class ConfidantService {
 
-  /**
-   * Base URL of backend API
-   */
-  apiURL = 'http://localhost:3000/confidants';
+  private apiUrl = 'http://localhost:3000/api/confidants';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   /**
-   * GET all confidants
+   * Get all confidants from database
    */
-  getConfidants(): Observable<Confidant[]> {
-
-    return this.http.get<Confidant[]>(this.apiURL);
-
+  getConfidants(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
   }
 
   /**
-   * GET single confidant
+   * Update notes field
    */
-  getConfidant(id: string): Observable<Confidant> {
+  updateNotes(id: string, notes: string) {
 
-    return this.http.get<Confidant>(`${this.apiURL}/${id}`);
-
-  }
-
-  /**
-   * CREATE confidant
-   */
-  addConfidant(confidant: Confidant): Observable<Confidant> {
-
-    return this.http.post<Confidant>(this.apiURL, confidant);
-
-  }
-
-  /**
-   * UPDATE confidant
-   */
-  updateConfidant(id: string, confidant: Confidant): Observable<Confidant> {
-
-    return this.http.put<Confidant>(`${this.apiURL}/${id}`, confidant);
-
-  }
-
-  /**
-   * DELETE confidant
-   */
-  deleteConfidant(id: string): Observable<any> {
-
-    return this.http.delete(`${this.apiURL}/${id}`);
+    return this.http.put(`${this.apiUrl}/${id}`, { notes });
 
   }
 
