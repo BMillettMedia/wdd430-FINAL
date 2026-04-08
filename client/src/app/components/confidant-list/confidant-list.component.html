@@ -1,51 +1,26 @@
-<h2>Persona Confidant Manager</h2>
+<h2>Confidants</h2>
 
 <table border="1">
 
-  <thead>
+<tr>
+<th>Name</th>
+<th>Arcana</th>
+<th>Game</th>
+<th>Rank</th>
+<th>Actions</th>
+</tr>
 
-    <tr>
-    <th>Name</th>
-    <th>Arcana</th>
-    <th>Game</th>
-    <th>Rank</th>
-    <th>Notes</th>
-    <th>Save</th>
-    </tr>
+<tr *ngFor="let c of confidants">
 
-  </thead>
+<td>{{c.name}}</td>
+<td>{{c.arcana}}</td>
+<td>{{c.game}}</td>
+<td>{{c.rank}} / {{c.maxRank}}</td>
 
-  <tbody>
+<td>
+<a [routerLink]="['/edit', c._id]">Edit</a>
+</td>
 
-    <tr *ngFor="let confidant of confidants">
-
-    <td>{{confidant.name}}</td>
-
-    <td>{{confidant.arcana}}</td>
-
-    <td>{{confidant.game}}</td>
-
-    <td>{{confidant.rank}} / {{confidant.maxRank}}</td>
-
-    <td>
-
-    <input
-    [(ngModel)]="confidant.notes"
-    style="width:300px"
-    />
-
-    </td>
-
-    <td>
-
-    <button (click)="saveNotes(confidant)">
-    Save
-    </button>
-
-    </td>
-
-    </tr>
-
-  </tbody>
+</tr>
 
 </table>
