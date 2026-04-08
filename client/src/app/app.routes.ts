@@ -1,9 +1,5 @@
-/**
- * Angular routing configuration
- * Defines navigation paths for the SPA
- */
-
 import { Routes } from '@angular/router';
+
 import { ConfidantListComponent } from './components/confidant-list/confidant-list.component';
 import { ConfidantEditComponent } from './components/confidant-edit/confidant-edit.component';
 

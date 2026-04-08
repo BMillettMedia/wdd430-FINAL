@@ -3,23 +3,26 @@
 
 <form (ngSubmit)="saveConfidant()">
 
-    <label>Name</label>
-    <input [(ngModel)]="confidant.name" name="name">
+<label>Name</label>
+<input [(ngModel)]="confidant.name" name="name">
 
-    <label>Arcana</label>
-    <input [(ngModel)]="confidant.arcana" name="arcana">
+<label>Arcana</label>
+<input [(ngModel)]="confidant.arcana" name="arcana">
 
-    <label>Game</label>
-    <input [(ngModel)]="confidant.game" name="game">
+<label>Game</label>
+<input [(ngModel)]="confidant.game" name="game">
 
-    <label>Rank</label>
-    <input type="number" [(ngModel)]="confidant.rank" name="rank">
+<label>Rank</label>
+<input type="number" [(ngModel)]="confidant.rank" name="rank">
 
-    <label>Notes</label>
-    <textarea [(ngModel)]="confidant.notes" name="notes"></textarea>
+<label>Max Rank</label>
+<input type="number" [(ngModel)]="confidant.maxRank" name="maxRank">
 
-    <br><br>
+<label>Notes</label>
+<textarea [(ngModel)]="confidant.notes" name="notes"></textarea>
 
-    <button type="submit">Save</button>
+<br><br>
+
+<button type="submit">Save</button>
 
 </form>

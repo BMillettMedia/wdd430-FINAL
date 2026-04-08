@@ -1,13 +1,13 @@
-/**
- * Add / Edit confidant form
- */
-
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ConfidantService } from '../../services/confidant.service';
+
+/**
+ * Component used to add or edit confidants
+ */
 
 @Component({
   selector: 'app-confidant-edit',
@@ -27,7 +27,7 @@ export class ConfidantEditComponent implements OnInit {
     private confidantService: ConfidantService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
 
     const id = this.route.snapshot.paramMap.get('id');
 
@@ -36,7 +36,7 @@ export class ConfidantEditComponent implements OnInit {
       this.editMode = true;
 
       this.confidantService.getConfidant(id)
-        .subscribe(data => {
+        .subscribe((data) => {
 
           this.confidant = data;
 
@@ -46,7 +46,7 @@ export class ConfidantEditComponent implements OnInit {
 
   }
 
-  saveConfidant() {
+  saveConfidant(): void {
 
     if (this.editMode) {
 

@@ -1,12 +1,28 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterOutlet, RouterLink } from '@angular/router';
+
+/**
+ * Root application component
+ * Displays navigation and router outlet
+ */
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  standalone: true,
+  imports: [RouterOutlet, RouterLink],
+
+  template: `
+    <h1>Persona Confidant Manager</h1>
+
+    <nav>
+      <a routerLink="/">Home</a> |
+      <a routerLink="/add">Add Confidant</a>
+    </nav>
+
+    <hr>
+
+    <router-outlet></router-outlet>
+  `
 })
-export class App {
-  protected readonly title = signal('client');
-}
+
+export class AppComponent {}

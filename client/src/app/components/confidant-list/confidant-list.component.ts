@@ -1,53 +1,40 @@
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
+import { ConfidantService } from '../../services/confidant.service';
+
 /**
- * Service for communicating with the Node API
+ * Displays all confidants in a table
  */
 
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
-@Injectable({
-  providedIn: 'root'
+@Component({
+  selector: 'app-confidant-list',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+  templateUrl: './confidant-list.component.html'
 })
 
-export class ConfidantService {
+export class ConfidantListComponent implements OnInit {
 
-  private apiUrl = 'http://localhost:3000/api/confidants';
+  confidants: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private confidantService: ConfidantService) {}
 
-  /** GET all confidants */
-  getConfidants(): Observable<any[]> {
+  ngOnInit(): void {
 
-    return this.http.get<any[]>(this.apiUrl);
-
-  }
-
-  /** GET one confidant */
-  getConfidant(id: string): Observable<any> {
-
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+    this.loadConfidants();
 
   }
 
-  /** ADD confidant */
-  addConfidant(confidant: any) {
+  loadConfidants(): void {
 
-    return this.http.post(this.apiUrl, confidant);
+    this.confidantService.getConfidants()
+      .subscribe((data) => {
 
-  }
+        this.confidants = data;
 
-  /** UPDATE confidant */
-  updateConfidant(id: string, confidant: any) {
-
-    return this.http.put(`${this.apiUrl}/${id}`, confidant);
-
-  }
-
-  /** DELETE confidant */
-  deleteConfidant(id: string) {
-
-    return this.http.delete(`${this.apiUrl}/${id}`);
+      });
 
   }
 
