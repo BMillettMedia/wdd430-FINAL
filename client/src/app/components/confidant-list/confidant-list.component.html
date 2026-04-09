@@ -8,22 +8,27 @@
 <th>Name</th>
 <th>Arcana</th>
 <th>Game</th>
-<th>Rank</th>
-<th>Actions</th>
+<th>Current Rank</th>
+<th>Max Rank</th>
+<th>Notes</th>
 </tr>
 
-<tr *ngFor="let c of confidants">
+<tr *ngFor="let confidant of confidants">
 
-<td>{{c.name}}</td>
-<td>{{c.arcana}}</td>
-<td>{{c.game}}</td>
-<td>{{c.rank}}</td>
+<td>{{ confidant.name }}</td>
+<td>{{ confidant.arcana }}</td>
+<td>{{ confidant.game }}</td>
+<td>{{ confidant.rank }}</td>
+<td>{{ confidant.maxRank }}</td>
+<td>{{ confidant.notes }}</td>
+
+</tr>
 
 <td>
-  <a [routerLink]="['/detail', c._id]">View</a>
-<a [routerLink]="['/edit', c._id]">Edit</a>
+  <a [routerLink]="['/detail', confidants._id]">View</a>
+<a [routerLink]="['/edit', confidants._id]">Edit</a>
 </td>
 
-</tr>
+
 
 </table>
