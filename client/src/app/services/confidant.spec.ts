@@ -1,16 +1,21 @@
-import { TestBed } from '@angular/core/testing';
-
 import { Confidant } from './confidant';
 
-describe('Confidant', () => {
-  let service: Confidant;
+describe('Confidant Model', () => {
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(Confidant);
+  it('should create a valid confidant object', () => {
+
+    const confidant: Confidant = {
+      name: "Joker",
+      arcana: "Fool",
+      game: "Persona 5 Royal",
+      rank: 1,
+      maxRank: 10,
+      notes: "Leader of the Phantom Thieves"
+    };
+
+    expect(confidant).toBeTruthy();
+    expect(confidant.name).toBe("Joker");
+
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
 });

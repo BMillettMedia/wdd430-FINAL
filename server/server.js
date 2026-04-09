@@ -46,3 +46,49 @@ async function run() {
   }
 }
 run().catch(console.dir);
+
+const express = require("express");
+const router = express.Router();
+
+const fs = require("fs");
+const path = require("path");
+
+const { getDB, isUsingMock } = require("../database");
+
+router.get("/", async (req, res) => {
+
+  try {
+
+    if (isUsingMock()) {
+
+      const filePath = path.join(
+        __dirname,
+        "../mockData/confidant-data.json"
+      );
+
+      const raw = fs.readFileSync(filePath);
+
+      const data = JSON.parse(raw);
+
+      return res.json(data.confidants); // IMPORTANT
+
+    }
+
+    const db = getDB();
+
+    const confidants = await db
+      .collection("confidants")
+      .find({})
+      .toArray();
+
+    res.json(confidants);
+
+  } catch (error) {
+
+    console.error(error);
+    res.status(500).json({ error: "Failed to load confidants" });
+
+  }
+});
+
+module.exports = router;
