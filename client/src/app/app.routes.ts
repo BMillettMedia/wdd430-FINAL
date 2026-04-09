@@ -1,8 +1,3 @@
-/**
- * Application Routes
- * Defines navigation paths for the Confidant Tracker app
- */
-
 import { Routes } from '@angular/router';
 
 import { ConfidantListComponent } from './components/confidant-list/confidant-list.component';
@@ -10,16 +5,7 @@ import { ConfidantDetailComponent } from './components/confidant-detail/confidan
 import { ConfidantEditComponent } from './components/confidant-edit/confidant-edit.component';
 
 export const routes: Routes = [
-  {
-    path: '',
-    component: ConfidantListComponent
-  },
-  {
-    path: 'detail/:id',
-    component: ConfidantDetailComponent
-  },
-  {
-    path: 'edit/:id',
-    component: ConfidantEditComponent
-  }
+  { path: '', component: ConfidantListComponent },
+  { path: 'detail/:id', component: ConfidantDetailComponent },
+  { path: 'edit/:id', component: ConfidantEditComponent }
 ];

@@ -44,8 +44,8 @@ export class ConfidantService {
     UPDATE confidant
     This is the function your edit component calls
   */
-  updateConfidant(confidant: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${confidant._id}`, confidant);
+  updateConfidant(confidant: any) {
+  return this.http.put(`${this.apiUrl}/${confidant._id}`, confidant);
   }
 
   /*
@@ -55,4 +55,9 @@ export class ConfidantService {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
+  createConfidant(confidant: any) {
+  return this.http.post(this.apiUrl, confidant);
+}
+
+  
 }
