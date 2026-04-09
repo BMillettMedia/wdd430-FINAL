@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ConfidantService } from '../../services/confidant.service';
+
+import { ConfidantService, Confidant } from '../../services/confidant.service';
 
 /*
-  Allows editing or adding a confidant.
+  Component for creating or editing a confidant
 */
 
 @Component({
@@ -14,10 +15,20 @@ import { ConfidantService } from '../../services/confidant.service';
   imports: [CommonModule, FormsModule],
   templateUrl: './confidant-edit.component.html'
 })
+
 export class ConfidantEditComponent implements OnInit {
 
-  confidant: any = {};
-  editMode: boolean = false;
+  confidant: Confidant = {
+    name: '',
+    arcana: '',
+    game: '',
+    rank: 1,
+    maxRank: 10,
+    notes: ''
+  };
+
+  editMode = false;
+  id: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,46 +38,57 @@ export class ConfidantEditComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const id = this.route.snapshot.paramMap.get('id');
+    this.id = this.route.snapshot.paramMap.get('id');
 
-    if (id) {
+    if (this.id) {
+
       this.editMode = true;
 
-      this.confidantService.getConfidant(id).subscribe({
+      this.confidantService.getConfidant(this.id).subscribe({
+
         next: (data) => {
           this.confidant = data;
         },
+
         error: (err) => {
           console.error("Error loading confidant:", err);
         }
+
       });
+
     }
   }
 
   saveConfidant(): void {
 
-    if (this.editMode) {
+    if (this.editMode && this.id) {
 
-      this.confidantService.updateConfidant(this.confidant).subscribe({
+      this.confidantService.updateConfidant(this.id, this.confidant).subscribe({
+
         next: () => {
-          console.log("Confidant updated successfully");
+          console.log("Confidant updated");
           this.router.navigate(['/']);
         },
+
         error: (err) => {
           console.error("Update failed:", err);
         }
+
       });
 
     } else {
 
       this.confidantService.createConfidant(this.confidant).subscribe({
+
         next: () => {
-          console.log("Confidant created successfully");
+          console.log("Confidant created");
           this.router.navigate(['/']);
         },
+
         error: (err) => {
           console.error("Creation failed:", err);
         }
+
       });
 
     }

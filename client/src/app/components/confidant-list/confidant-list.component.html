@@ -1,34 +1,61 @@
-<h2>Confidant List</h2>
+<h2>Persona Confidants</h2>
 
-<a routerLink="/add">Add New Confidant</a>
+<div *ngIf="loading">
+  Loading confidants...
+</div>
 
-<table border="1">
+<div *ngIf="error">
+  {{ error }}
+</div>
 
-<tr>
-<th>Name</th>
-<th>Arcana</th>
-<th>Game</th>
-<th>Current Rank</th>
-<th>Max Rank</th>
-<th>Notes</th>
-</tr>
+<table *ngIf="!loading && confidants.length > 0" border="1">
 
-<tr *ngFor="let confidant of confidants">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Arcana</th>
+      <th>Game</th>
+      <th>Rank</th>
+      <th>Max Rank</th>
+      <th>Notes</th>
+      <th>Save</th>
+    </tr>
+  </thead>
 
-<td>{{ confidant.name }}</td>
-<td>{{ confidant.arcana }}</td>
-<td>{{ confidant.game }}</td>
-<td>{{ confidant.rank }}</td>
-<td>{{ confidant.maxRank }}</td>
-<td>{{ confidant.notes }}</td>
+  <tbody>
 
-</tr>
+    <tr *ngFor="let confidant of confidants">
 
-<td>
-  <a [routerLink]="['/detail', confidants._id]">View</a>
-<a [routerLink]="['/edit', confidants._id]">Edit</a>
-</td>
+      <td>{{ confidant.name }}</td>
 
+      <td>{{ confidant.arcana }}</td>
 
+      <td>{{ confidant.game }}</td>
+
+      <td>{{ confidant.rank }}</td>
+
+      <td>{{ confidant.maxRank }}</td>
+
+      <td>
+        <input
+          type="text"
+          [(ngModel)]="confidant.notes"
+          style="width:200px"
+        >
+      </td>
+
+      <td>
+        <button (click)="saveNotes(confidant)">
+          Save
+        </button>
+      </td>
+
+    </tr>
+
+  </tbody>
 
 </table>
+
+<div *ngIf="!loading && confidants.length === 0">
+  No confidants found.
+</div>
