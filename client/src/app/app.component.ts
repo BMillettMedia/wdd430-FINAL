@@ -9,16 +9,9 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
-  template: `
-    <h1>Persona Confidant Manager</h1>
-
-    <nav>
-      <a routerLink="/">Home</a> |
-      <a routerLink="/add">Add Confidant</a>
-    </nav>
-
-    <router-outlet></router-outlet>
-  `
+  template: `./app.component.html`
 })
 
-export class AppComponent {}
+export class AppComponent {
+    title= 'Persona Confidant Manager';
+}

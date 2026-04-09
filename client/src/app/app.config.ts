@@ -1,5 +1,6 @@
 /**
- * Application configuration
+ * Angular Application Configuration
+ * Sets up routing and HTTP client services
  */
 
 import { ApplicationConfig } from '@angular/core';

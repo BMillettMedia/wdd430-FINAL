@@ -17,9 +17,10 @@
 <td>{{c.name}}</td>
 <td>{{c.arcana}}</td>
 <td>{{c.game}}</td>
-<td>{{c.rank}} / {{c.maxRank}}</td>
+<td>{{c.rank}}</td>
 
 <td>
+  <a [routerLink]="['/detail', c._id]">View</a>
 <a [routerLink]="['/edit', c._id]">Edit</a>
 </td>
 

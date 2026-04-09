@@ -1,13 +1,13 @@
-<h2>{{ confidant.name }}</h2>
+<div *ngIf="confidant">
 
-<p><strong>Arcana:</strong> {{ confidant.arcana }}</p>
+<h2>{{confidant.name}}</h2>
 
-<p><strong>Game:</strong> {{ confidant.game }}</p>
+<p><b>Arcana:</b> {{confidant.arcana}}</p>
 
-<p><strong>Rank:</strong> {{ confidant.rank }}/{{ confidant.maxRank }}</p>
+<p><b>Game:</b> {{confidant.game}}</p>
 
-<p><strong>Notes:</strong></p>
+<p><b>Rank:</b> {{confidant.rank}}</p>
 
-<p>{{ confidant.notes }}</p>
+<p><b>Notes:</b> {{confidant.notes}}</p>
 
-<button routerLink="/">Back</button>
+</div>

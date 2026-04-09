@@ -1,13 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { ConfidantService } from '../../services/confidant.service';
 
-/**
- * Component used to add or edit confidants
- */
+/*
+  Confidant Edit Component
+
+  Purpose:
+  Allows users to edit a confidant's:
+  - Rank
+  - Personal notes
+
+  The updated information is saved back
+  to MongoDB through the Node API.
+*/
 
 @Component({
   selector: 'app-confidant-edit',
@@ -18,8 +25,8 @@ import { ConfidantService } from '../../services/confidant.service';
 
 export class ConfidantEditComponent implements OnInit {
 
+  // Holds confidant data retrieved from the API
   confidant: any = {};
-  editMode = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,49 +34,50 @@ export class ConfidantEditComponent implements OnInit {
     private confidantService: ConfidantService
   ) {}
 
+  /*
+    Runs when component loads.
+    Retrieves the confidant ID from the URL
+    and loads that confidant from the database.
+  */
   ngOnInit(): void {
 
     const id = this.route.snapshot.paramMap.get('id');
 
+    // Ensure ID exists before using it
     if (id) {
-
-      this.editMode = true;
-
       this.confidantService.getConfidant(id)
-        .subscribe((data) => {
-
-          this.confidant = data;
-
+        .subscribe({
+          next: (data) => {
+            this.confidant = data;
+          },
+          error: (err) => {
+            console.error('Error loading confidant:', err);
+          }
         });
-
     }
-
   }
 
-  saveConfidant(): void {
+  /*
+    Saves updated confidant information
+    (rank and notes) back to MongoDB
+  */
+  save(): void {
 
-    if (this.editMode) {
-
-      this.confidantService.updateConfidant(
-        this.confidant._id,
-        this.confidant
-      ).subscribe(() => {
-
-        this.router.navigate(['/']);
-
-      });
-
-    } else {
-
-      this.confidantService.addConfidant(this.confidant)
-        .subscribe(() => {
-
-          this.router.navigate(['/']);
-
-        });
-
+    if (!this.confidant || !this.confidant._id) {
+      console.error("Confidant ID missing");
+      return;
     }
 
+    this.confidantService.updateConfidant(this.confidant)
+      .subscribe({
+        next: () => {
+          console.log("Confidant updated successfully");
+          this.router.navigate(['/']);
+        },
+        error: (err) => {
+          console.error("Update failed:", err);
+        }
+      });
   }
 
 }
