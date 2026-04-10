@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Your MongoDB Atlas connection string
-const uri = "YOUR_MONGODB_CONNECTION_STRING";
+const uri = "mongodb+srv://admin:persona@finalsdata.i9dnsp1.mongodb.net/";
 
 // Path to local mock dataset
 const mockDataPath = path.join(__dirname, 'mockData', 'confidant-data.json');
@@ -31,3 +31,38 @@ mongoose.connect(uri)
     console.table(mockData);
 
 });
+
+const { MongoClient } = require("mongodb");
+
+const client = new MongoClient(uri);
+
+async function run() {
+
+  try {
+
+    await client.connect();
+
+    console.log("Connected to MongoDB Atlas");
+
+    const db = client.db("FinalsData");
+
+    const data = await db
+      .collection("confidants")
+      .find({})
+      .toArray();
+
+    console.log("Confidants in DB:", data);
+
+  } catch (err) {
+
+    console.error("Connection error:", err);
+
+  } finally {
+
+    await client.close();
+
+  }
+
+}
+
+run();
